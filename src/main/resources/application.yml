@@ -1,5 +1,8 @@
 server:
   port: 9000
+  servlet:
+    context-path: /sell
+
 spring:
   application:
     name: sell
@@ -7,9 +10,14 @@ spring:
     url: jdbc:mysql://192.168.0.104:3306/sell?characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 123456
+    password: root
   jpa:
     show-sql: true
     database: mysql
 
 
+#logging:
+#  pattern:
+#    console: "%d - %msg%n"
+##  path: D:/01-Project/sell/log   #将日志存储到 src/main/log 目录下，默认文件名为spring.log
+#  file: D:/01-Project/sell/log/sell.log   #将日志存储到 src/main/log 目录下，并且设置日志文件名为sell.log

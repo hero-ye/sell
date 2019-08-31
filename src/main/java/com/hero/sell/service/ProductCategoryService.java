@@ -28,11 +28,11 @@ public class ProductCategoryService {
 
     /**
      * 根据ID查询
-     * @param id
+     * @param categoryId
      * @return
      */
-    public ProductCategory findById(String id) {
-        ProductCategory productCategory = productCategoryDao.getOne(id);
+    public ProductCategory findById(String categoryId) {
+        ProductCategory productCategory = productCategoryDao.getOne(categoryId);
         return productCategory;
     }
 
