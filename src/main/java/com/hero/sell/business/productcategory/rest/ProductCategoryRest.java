@@ -1,10 +1,11 @@
-package com.hero.sell.rest;
+package com.hero.sell.business.productcategory.rest;
 
+import com.hero.sell.business.productcategory.service.ProductCategoryService;
 import com.hero.sell.entities.ProductCategory;
-import com.hero.sell.service.ProductCategoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,22 +26,37 @@ public class ProductCategoryRest {
     @Resource
     private ProductCategoryService productCategoryService;
 
-    @RequestMapping("/findAll")
+    /**
+     * 查询所有
+     * @return
+     */
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public List<ProductCategory> findAll() {
         return productCategoryService.findAll();
     }
 
-    @RequestMapping("/findById")
+    /**
+     * 根据ID查询
+     * @param categoryId
+     * @return
+     */
+    @RequestMapping(value = "/findById", method = RequestMethod.GET)
     public ProductCategory findById(@RequestParam String categoryId) {
         ProductCategory productCategory = null;
         try {
             productCategory = productCategoryService.findById(categoryId);
-            log.info("查询结果：" + productCategory.toString());
-            log.warn("即将出现错误！");
-            int error = 1 / 0;
         } catch (Exception e) {
             log.error("查询出错："+e.getMessage());
         }
         return productCategory;
+    }
+
+    /**
+     * 新增/更新
+     * @param productCategory
+     */
+    @RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
+    public void savaOrUpdate(ProductCategory productCategory) {
+        productCategoryService.saveOrUpdate(productCategory);
     }
 }
