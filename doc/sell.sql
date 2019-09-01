@@ -4,14 +4,14 @@
  Source Server         : sell
  Source Server Type    : MySQL
  Source Server Version : 50717
- Source Host           : 192.168.0.104:3306
+ Source Host           : 192.168.0.117:3306
  Source Schema         : sell
 
  Target Server Type    : MySQL
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 25/08/2019 20:48:06
+ Date: 02/09/2019 00:24:05
 */
 
 SET NAMES utf8mb4;
@@ -23,11 +23,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `tbl_order_detail`;
 CREATE TABLE `tbl_order_detail`  (
   `detail_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '详情ID',
-  `order_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '关联订单主表ID(tbl_order_main.order_id)',
-  `product_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '关联商品表ID(tbl_product_info.product_id)',
-  `product_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名称',
-  `product_price` decimal(8, 2) NOT NULL COMMENT '商品价格',
-  `product_quantity` int(11) NOT NULL COMMENT '商品数量',
+  `order_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联订单主表ID(tbl_order_main.order_id)',
+  `product_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联商品表ID(tbl_product_info.product_id)',
+  `product_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `product_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '商品价格',
+  `product_quantity` int(11) NULL DEFAULT NULL COMMENT '商品数量',
   `product_icon` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品图片',
   `create_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
@@ -43,13 +43,13 @@ CREATE TABLE `tbl_order_detail`  (
 DROP TABLE IF EXISTS `tbl_order_main`;
 CREATE TABLE `tbl_order_main`  (
   `order_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '订单ID',
-  `buyer_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '买家姓名',
-  `buyer_phone` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '买家电话',
-  `buyer_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '买家地址',
-  `buyer_openid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '买家微信openid',
-  `order_amount` decimal(8, 2) NOT NULL COMMENT '订单总金额',
-  `order_status` tinyint(3) NOT NULL COMMENT '订单状态：(默认)0 新下单',
-  `pay_status` tinyint(3) NOT NULL DEFAULT 0 COMMENT '支付状态：(默认)0 未支付',
+  `buyer_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家姓名',
+  `buyer_phone` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家电话',
+  `buyer_address` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家地址',
+  `buyer_openid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '买家微信openid',
+  `order_amount` decimal(8, 2) NULL DEFAULT NULL COMMENT '订单总金额',
+  `order_status` tinyint(3) NULL DEFAULT NULL COMMENT '订单状态：(默认)0 新下单',
+  `pay_status` tinyint(3) NULL DEFAULT 0 COMMENT '支付状态：(默认)0 未支付',
   `create_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `modify_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
@@ -64,8 +64,8 @@ CREATE TABLE `tbl_order_main`  (
 DROP TABLE IF EXISTS `tbl_product_category`;
 CREATE TABLE `tbl_product_category`  (
   `category_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
-  `category_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '类目名称',
-  `category_code` int(11) NOT NULL COMMENT '类目编号',
+  `category_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类目名称',
+  `category_code` int(11) NULL DEFAULT NULL COMMENT '类目编号',
   `create_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `modify_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
@@ -75,17 +75,25 @@ CREATE TABLE `tbl_product_category`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品类目表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tbl_product_category
+-- ----------------------------
+INSERT INTO `tbl_product_category` VALUES ('2c9180896b27f578016b2a9a63e00003', '热销榜', 2, '叶金雄', '2019-08-25 23:24:17', '叶金雄', '2019-08-25 23:24:24');
+INSERT INTO `tbl_product_category` VALUES ('2c9180926880db770168813692c70002', '天天半价', 3, '叶金雄', '2019-08-26 00:09:54', '叶金雄', '2019-08-26 00:09:51');
+INSERT INTO `tbl_product_category` VALUES ('402880e86cec24bd016cec2639df0000', '九月特惠', 4, 'yejx', NULL, 'yejx', '2019-09-01 17:57:25');
+
+-- ----------------------------
 -- Table structure for tbl_product_info
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_product_info`;
 CREATE TABLE `tbl_product_info`  (
   `product_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品ID',
-  `product_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名称',
-  `product_price` decimal(8, 2) NOT NULL COMMENT '单价',
-  `product_stock` int(11) NOT NULL COMMENT '库存',
+  `product_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `product_price` decimal(8, 2) NULL DEFAULT NULL COMMENT '单价',
+  `product_stock` int(11) NULL DEFAULT NULL COMMENT '库存',
   `product_desc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述',
   `product_icon` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品图片',
-  `category_code` int(11) NOT NULL COMMENT '类目编号',
+  `product_status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品状态：0 正常，1 下架',
+  `category_code` int(11) NULL DEFAULT NULL COMMENT '类目编号',
   `create_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `modify_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
@@ -94,14 +102,21 @@ CREATE TABLE `tbl_product_info`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品信息表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tbl_product_info
+-- ----------------------------
+INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced44a7330000', '奥尔良鸡肉披萨', 72.90, 38, '精选奥尔良上等鸡肉', '/icon/2019/09/01/pizza.jpg', '0', 2, 'yejx', '2019-09-01 22:40:12', 'yejx', '2019-09-01 22:40:14');
+INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced47c5b00001', '地狱拉面', 38.00, 22, '不一样的拉面', '/icon/2019/09/01/hellramen.jpg', '0', 2, 'yejx', '2019-09-01 22:48:17', 'yejx', '2019-09-01 22:48:15');
+INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced49a6b60002', '北极贝刺身', 58.00, 1, '6片/份。加拿大冷水生长北极贝。', '/icon/2019/09/01/scallops sashimi.jpg', '0', 3, 'yejx', '2019-09-01 22:48:20', 'yejx', '2019-09-01 22:48:22');
+
+-- ----------------------------
 -- Table structure for tbl_seller_info
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_seller_info`;
 CREATE TABLE `tbl_seller_info`  (
   `id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '主键ID',
-  `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `openid` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '微信openid',
+  `username` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `password` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `openid` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '微信openid',
   `create_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人',
   `create_time` timestamp(0) NULL DEFAULT NULL COMMENT '创建时间',
   `modify_name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
