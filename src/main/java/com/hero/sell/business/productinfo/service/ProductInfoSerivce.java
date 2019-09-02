@@ -104,7 +104,7 @@ public class ProductInfoSerivce {
                 if (param.get("productStatus") != null && !"".equals(param.get("productStatus"))) {
                     predicateList.add(cb.like(root.get("productStatus").as(String.class), "%" + (String) param.get("productStatus") + "%"));
                 }
-                // 商品状态
+                // 类目编码
                 if (param.get("categoryCode") != null && !"".equals(param.get("categoryCode"))) {
                     predicateList.add(cb.like(root.get("categoryCode").as(String.class), "%" + (String) param.get("categoryCode") + "%"));
                 }

@@ -39,8 +39,8 @@ public class ProductInfo {
     @Column(name = "product_icon", length = 512)
     private String productIcon;     //商品图片
 
-    @Column(name = "product_status", length = 2)
-    private String productStatus;     //商品状态：0 正常，1 下架
+    @Column(name = "product_status", length = 3)
+    private Integer productStatus;     //商品状态：0 正常，1 下架
 
     @Column(name = "category_code", length = 11)
     private Integer categoryCode;   //类目编号
