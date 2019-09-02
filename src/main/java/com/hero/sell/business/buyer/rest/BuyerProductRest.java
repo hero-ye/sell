@@ -5,7 +5,6 @@ import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
 import com.hero.sell.common.vo.ProductInfoVO;
 import com.hero.sell.common.vo.ProductVO;
 import com.hero.sell.common.vo.ResultVO;
-import com.hero.sell.common.vo.StatusCode;
 import com.hero.sell.entities.ProductCategory;
 import com.hero.sell.entities.ProductInfo;
 import org.slf4j.Logger;
@@ -83,11 +82,11 @@ public class BuyerProductRest {
                 productVO.setProductInfoVO(productInfoVOList);
                 productVOList.add(productVO);
             }
-            resultVO.setCode(StatusCode.OK);
+            resultVO.setCode(0);
             resultVO.setMsg("查询成功！");
             resultVO.setData(productVOList);
         } catch (Exception e) {
-            resultVO.setCode(StatusCode.ERROR);
+            resultVO.setCode(1);
             resultVO.setMsg("查询成功失败：" + e.getMessage());
             log.error("查询成功失败：" + e.getMessage());
         }
