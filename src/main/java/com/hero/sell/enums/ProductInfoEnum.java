@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 public enum ProductInfoEnum {
 
-    up("0", "在架"), down("1", "下架");
+    UP("0", "在架"), DOWN("1", "下架");
 
     private String code;
 

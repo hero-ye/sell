@@ -47,7 +47,7 @@ public class ProductInfoSerivce {
      * @return
      */
     public List<ProductInfo> findUpAll(){
-        return productInfoDao.findByProductStatus(ProductInfoEnum.up.getCode());
+        return productInfoDao.findByProductStatus(ProductInfoEnum.UP.getCode());
     }
 
     /**
