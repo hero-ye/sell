@@ -23,7 +23,7 @@ public class ProductCategoryRest {
 
     private static final Logger log = LoggerFactory.getLogger(ProductCategoryService.class);
 
-    @Resource
+    @Resource(name = "productCategoryService")
     private ProductCategoryService productCategoryService;
 
     /**
