@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 02/09/2019 00:24:05
+ Date: 03/09/2019 00:37:25
 */
 
 SET NAMES utf8mb4;
@@ -57,6 +57,13 @@ CREATE TABLE `tbl_order_main`  (
   PRIMARY KEY (`order_id`) USING BTREE,
   INDEX `idx_buyer_openid`(`buyer_openid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '订单主表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_order_main
+-- ----------------------------
+INSERT INTO `tbl_order_main` VALUES ('402880e86cf2b30d016cf2b36be90000', '叶金雄', '17671616677', '湖北省武汉市东西湖区联通路环湖东路中国联通湖北分公司', '1001011', 72.90, 0, 0, 'yejx', '2019-09-02 23:59:49', 'yejx', '2019-09-02 23:59:52');
+INSERT INTO `tbl_order_main` VALUES ('402880e86cf2bf42016cf2c1f8030001', '叶金雄', '15927125366', '湖北省武汉市东西湖区联通路环湖东路中国联通湖北分公司', '1001011', 38.00, 0, 0, 'yejx', '2019-09-03 00:15:06', 'yejx', '2019-09-03 00:15:08');
+INSERT INTO `tbl_order_main` VALUES ('402880e86cf2c337016cf2c79a120000', '叶金雄', '15927124358', '湖北省武汉市江汉区常青路万景国际B座11楼', '1001011', 58.00, 0, 0, 'yejx', '2019-09-03 00:21:03', 'yejx', '2019-09-03 00:21:03');
 
 -- ----------------------------
 -- Table structure for tbl_product_category
