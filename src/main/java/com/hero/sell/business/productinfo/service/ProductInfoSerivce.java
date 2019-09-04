@@ -51,6 +51,15 @@ public class ProductInfoSerivce {
     }
 
     /**
+     * 根据主键ID查询
+     * @param productId
+     * @return
+     */
+    public ProductInfo findById(String productId) {
+        return productInfoDao.findById(productId).get();
+    }
+
+    /**
      * 新增/更新
      * @param productInfo
      */
@@ -124,9 +133,6 @@ public class ProductInfoSerivce {
                 if (param.get("modifyTime") != null && !"".equals(param.get("modifyTime"))) {
                     predicateList.add(cb.like(root.get("modifyTime").as(String.class), "%" + (String) param.get("modifyTime") + "%"));
                 }
-
-
-
                 return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
             }
         };

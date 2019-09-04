@@ -1,7 +1,7 @@
 package com.hero.sell.business.ordermain.reset;
 
 import com.hero.sell.business.ordermain.service.OrderMainService;
-import com.hero.sell.common.vo.ResultVO;
+import com.hero.sell.vo.ResultVO;
 import com.hero.sell.entities.OrderMain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

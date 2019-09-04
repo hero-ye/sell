@@ -1,4 +1,4 @@
-package com.hero.sell.common.vo;
+package com.hero.sell.vo;
 
 import lombok.Data;
 

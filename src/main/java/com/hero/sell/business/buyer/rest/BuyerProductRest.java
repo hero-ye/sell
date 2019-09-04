@@ -2,9 +2,9 @@ package com.hero.sell.business.buyer.rest;
 
 import com.hero.sell.business.productcategory.service.ProductCategoryService;
 import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
-import com.hero.sell.common.vo.ProductInfoVO;
-import com.hero.sell.common.vo.ProductVO;
-import com.hero.sell.common.vo.ResultVO;
+import com.hero.sell.vo.ProductInfoVO;
+import com.hero.sell.vo.ProductVO;
+import com.hero.sell.vo.ResultVO;
 import com.hero.sell.entities.ProductCategory;
 import com.hero.sell.entities.ProductInfo;
 import org.slf4j.Logger;

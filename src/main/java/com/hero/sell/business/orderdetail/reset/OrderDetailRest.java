@@ -2,7 +2,7 @@ package com.hero.sell.business.orderdetail.reset;
 
 import com.hero.sell.business.orderdetail.service.OrderDetailService;
 import com.hero.sell.business.ordermain.reset.OrderMainRest;
-import com.hero.sell.common.vo.ResultVO;
+import com.hero.sell.vo.ResultVO;
 import com.hero.sell.entities.OrderDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
