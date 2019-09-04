@@ -34,7 +34,15 @@ public class OrderMainService  {
     public Page<OrderMain> findByBuyerOpenid(String openId, int page, int size){
         PageRequest pageRequest = new PageRequest(page, size);
         return orderMainDao.findByBuyerOpenid(openId, pageRequest);
+    }
 
+    /**
+     * 根据主键ID查询
+     * @param orderId
+     * @return
+     */
+    public OrderMain findById(String orderId){
+        return orderMainDao.findById(orderId).get();
     }
 
 

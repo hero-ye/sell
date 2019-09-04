@@ -68,4 +68,25 @@ public class OrderMainRest {
         return resultVO;
     }
 
+    /**
+     * 根据主键ID查询
+     * @param orderId
+     * @return
+     */
+    @RequestMapping(value = "/findById", method = RequestMethod.GET)
+    public ResultVO findById(String orderId) {
+        ResultVO resultVO = new ResultVO();
+        try {
+            OrderMain orderMain = orderMainService.findById(orderId);
+            resultVO.setCode(0);
+            resultVO.setMsg("查询成功！");
+            resultVO.setData(orderMain);
+        } catch (Exception e) {
+            resultVO.setCode(1);
+            resultVO.setMsg("查询失败：" + e.getMessage());
+            log.error("查询失败：" + e.getMessage());
+        }
+        return resultVO;
+    }
+
 }
