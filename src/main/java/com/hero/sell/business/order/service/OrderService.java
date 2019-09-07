@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -109,12 +110,22 @@ public class OrderService {
 
     /**
      * 查询单个订单
-     *
      * @param orderId
      * @return
      */
-    public OrderDTO findById(String orderId) {
-        return null;
+    public OrderDTO findOrderDTOById(String orderId) {
+        OrderMain orderMain = orderMainService.findById(orderId);
+        if (orderMain == null) {
+            throw new SellException(ResultEnum.ORDER_NOT_EXIST);    //订单不存在
+        }
+        List<OrderDetail> orderDetailList = orderDetailService.findByOrderId(orderId);
+        if (CollectionUtils.isEmpty(orderDetailList)) {
+            throw new SellException(ResultEnum.ORDERDETAIL_NOT_EXIST);  //订单详情不存在
+        }
+        OrderDTO orderDTO = new OrderDTO();
+        BeanUtils.copyProperties(orderMain, orderDTO);
+        orderDTO.setOrderDetailList(orderDetailList);
+        return orderDTO;
     }
 
     /**
