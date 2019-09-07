@@ -5,6 +5,7 @@ import com.hero.sell.entities.OrderDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,8 @@ public class OrderDetailService {
      * @param orderDetail
      */
     public void saveOrUpdate(OrderDetail orderDetail){
+        orderDetail.setCreateTime(new Date());
+        orderDetail.setModifyTime(new Date());
         orderDetailDao.save(orderDetail);
     }
 

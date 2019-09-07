@@ -2,8 +2,8 @@ package com.hero.sell.business.orderdetail.reset;
 
 import com.hero.sell.business.orderdetail.service.OrderDetailService;
 import com.hero.sell.business.ordermain.reset.OrderMainRest;
-import com.hero.sell.vo.ResultVO;
 import com.hero.sell.entities.OrderDetail;
+import com.hero.sell.vo.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -58,8 +57,6 @@ public class OrderDetailRest {
     public ResultVO saveOrUpdate(OrderDetail orderDetail) {
         ResultVO resultVO = new ResultVO();
         try {
-            orderDetail.setCreateTime(new Date());
-            orderDetail.setModifyTime(new Date());
             orderDetailService.saveOrUpdate(orderDetail);
             resultVO.setCode(0);
             resultVO.setMsg("保存成功！");

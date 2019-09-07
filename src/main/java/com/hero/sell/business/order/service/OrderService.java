@@ -3,6 +3,7 @@ package com.hero.sell.business.order.service;
 import com.hero.sell.business.orderdetail.service.OrderDetailService;
 import com.hero.sell.business.ordermain.service.OrderMainService;
 import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
+import com.hero.sell.converter.OrderMainToOrderDTOConverter;
 import com.hero.sell.dto.CartDTO;
 import com.hero.sell.dto.OrderDTO;
 import com.hero.sell.entities.OrderDetail;
@@ -13,6 +14,7 @@ import com.hero.sell.exception.SellException;
 import com.hero.sell.utils.GenerateUUID;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -130,13 +132,14 @@ public class OrderService {
 
     /**
      * 查询订单列表
-     *
      * @param buyerOpenId
      * @param pageable
      * @return
      */
-    public Page<OrderDTO> findList(String buyerOpenId, Pageable pageable) {
-        return null;
+    public Page<OrderDTO> findOrderList(String buyerOpenId, Pageable pageable) {
+        Page<OrderMain> orderMainPage = orderMainService.findByBuyerOpenid(buyerOpenId, pageable);
+        List<OrderDTO> orderDTOList = OrderMainToOrderDTOConverter.convert(orderMainPage.getContent());
+        return new PageImpl<>(orderDTOList, pageable, orderMainPage.getTotalElements());
     }
 
     /**
