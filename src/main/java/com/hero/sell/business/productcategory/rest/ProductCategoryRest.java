@@ -2,8 +2,7 @@ package com.hero.sell.business.productcategory.rest;
 
 import com.hero.sell.business.productcategory.service.ProductCategoryService;
 import com.hero.sell.entities.ProductCategory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +18,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/productCategoey")
+@Slf4j
 public class ProductCategoryRest {
-
-    private static final Logger log = LoggerFactory.getLogger(ProductCategoryService.class);
 
     @Resource(name = "productCategoryService")
     private ProductCategoryService productCategoryService;

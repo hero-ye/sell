@@ -3,8 +3,7 @@ package com.hero.sell.business.ordermain.reset;
 import com.hero.sell.business.ordermain.service.OrderMainService;
 import com.hero.sell.entities.OrderMain;
 import com.hero.sell.vo.ResultVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +20,8 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/ordermain")
+@Slf4j
 public class OrderMainRest {
-
-    private static final Logger log = LoggerFactory.getLogger(OrderMainRest.class);
 
     @Resource(name = "orderMainService")
     private OrderMainService orderMainService;

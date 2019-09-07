@@ -2,13 +2,12 @@ package com.hero.sell.business.buyer.rest;
 
 import com.hero.sell.business.productcategory.service.ProductCategoryService;
 import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
+import com.hero.sell.entities.ProductCategory;
+import com.hero.sell.entities.ProductInfo;
 import com.hero.sell.vo.ProductInfoVO;
 import com.hero.sell.vo.ProductVO;
 import com.hero.sell.vo.ResultVO;
-import com.hero.sell.entities.ProductCategory;
-import com.hero.sell.entities.ProductInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,9 +25,8 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/buyer/product")
+@Slf4j
 public class BuyerProductRest {
-
-    private static final Logger log = LoggerFactory.getLogger(BuyerProductRest.class);
 
     @Resource(name = "productInfoSerivce")
     private ProductInfoSerivce productInfoSerivce;

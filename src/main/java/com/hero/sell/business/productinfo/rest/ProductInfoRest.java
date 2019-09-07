@@ -2,8 +2,7 @@ package com.hero.sell.business.productinfo.rest;
 
 import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
 import com.hero.sell.entities.ProductInfo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +19,8 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/productInfo")
+@Slf4j
 public class ProductInfoRest {
-
-    private static final Logger log = LoggerFactory.getLogger(ProductInfoRest.class);
 
     @Resource(name = "productInfoSerivce")
     private ProductInfoSerivce productInfoSerivce;

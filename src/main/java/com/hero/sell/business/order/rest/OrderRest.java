@@ -3,8 +3,7 @@ package com.hero.sell.business.order.rest;
 import com.hero.sell.business.order.service.OrderService;
 import com.hero.sell.dto.OrderDTO;
 import com.hero.sell.vo.ResultVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +17,8 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/orderRest")
+@Slf4j
 public class OrderRest {
-
-    private static final Logger log = LoggerFactory.getLogger(OrderRest.class);
 
     @Resource(name = "orderService")
     private OrderService orderService;

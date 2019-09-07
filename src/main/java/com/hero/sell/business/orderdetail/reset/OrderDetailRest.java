@@ -1,11 +1,9 @@
 package com.hero.sell.business.orderdetail.reset;
 
 import com.hero.sell.business.orderdetail.service.OrderDetailService;
-import com.hero.sell.business.ordermain.reset.OrderMainRest;
 import com.hero.sell.entities.OrderDetail;
 import com.hero.sell.vo.ResultVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +18,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/orderdetail")
+@Slf4j
 public class OrderDetailRest {
-
-    private static final Logger log = LoggerFactory.getLogger(OrderMainRest.class);
 
     @Resource(name = "orderDetailService")
     private OrderDetailService orderDetailService;
