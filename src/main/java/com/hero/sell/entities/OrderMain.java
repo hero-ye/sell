@@ -1,9 +1,11 @@
 package com.hero.sell.entities;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,8 +20,8 @@ import java.util.Date;
 public class OrderMain {
 
     @Id
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    @GeneratedValue(generator = "system-uuid")
+//    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+//    @GeneratedValue(generator = "system-uuid")
     @Column(name = "order_id", length = 40, nullable = false, unique = true)
     private String orderId;  //订单ID
 
