@@ -1,18 +1,18 @@
 package com.hero.sell.business.ordermain.reset;
 
 import com.hero.sell.business.ordermain.service.OrderMainService;
-import com.hero.sell.vo.ResultVO;
 import com.hero.sell.entities.OrderMain;
+import com.hero.sell.vo.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 /**
  * @Description
@@ -32,8 +32,6 @@ public class OrderMainRest {
     public ResultVO saveOrUpdate(OrderMain orderMain){
         ResultVO resultVO = new ResultVO();
         try {
-            orderMain.setCreateTime(new Date());
-            orderMain.setModifyTime(new Date());
             orderMainService.saveOrUpdate(orderMain);
             resultVO.setCode(0);
             resultVO.setMsg("保存成功！");
@@ -55,8 +53,9 @@ public class OrderMainRest {
         ResultVO resultVO = new ResultVO();
         page = page == null ? 1 : page;
         size = size == null ? 10 : size;
+        PageRequest pageRequest = new PageRequest(page, size);
         try {
-            Page<OrderMain> orderMainPage = orderMainService.findByBuyerOpenid(openId, page, size);
+            Page<OrderMain> orderMainPage = orderMainService.findByBuyerOpenid(openId, pageRequest);
             resultVO.setCode(0);
             resultVO.setMsg("查询成功！");
             resultVO.setData(orderMainPage);
