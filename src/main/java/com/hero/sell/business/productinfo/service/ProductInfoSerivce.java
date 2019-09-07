@@ -1,13 +1,17 @@
 package com.hero.sell.business.productinfo.service;
 
 import com.hero.sell.business.productinfo.dao.ProductInfoDao;
+import com.hero.sell.dto.CartDTO;
 import com.hero.sell.entities.ProductInfo;
 import com.hero.sell.enums.ProductInfoEnum;
+import com.hero.sell.enums.ResultEnum;
+import com.hero.sell.exception.SellException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -68,10 +72,33 @@ public class ProductInfoSerivce {
 
     }
 
-    //加库存
+    /**
+     * 加库存
+     * @param cartDTOList
+     */
+    public void increaseStock(List<CartDTO> cartDTOList){
 
+    }
 
-    //减库存
+    /**
+     * 减库存
+     * @param cartDTOList
+     */
+    @Transactional
+    public void decreaseStock(List<CartDTO> cartDTOList){
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = productInfoDao.findById(cartDTO.getProductId()).get();
+            if (productInfo == null) {
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);  //商品不存在
+            }
+            Integer result = productInfo.getProductStock() - cartDTO.getProductQuantity();
+            if (result < 0) {   //判断扣减后的库存
+                throw new SellException(ResultEnum.PRODUCT_STOCK_ERROR);
+            }
+            productInfo.setProductStock(result);
+            productInfoDao.save(productInfo);
+        }
+    }
 
 /**___________________________________________________分 割 线________________________________________________________*/
 
