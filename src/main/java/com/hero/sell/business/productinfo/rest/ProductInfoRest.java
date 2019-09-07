@@ -2,6 +2,7 @@ package com.hero.sell.business.productinfo.rest;
 
 import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
 import com.hero.sell.entities.ProductInfo;
+import com.hero.sell.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -67,12 +68,24 @@ public class ProductInfoRest {
      * @param productInfo
      */
     @RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
-    public void saveOrUpdate(ProductInfo productInfo){
+    public ResultVO saveOrUpdate(ProductInfo productInfo){
+        ResultVO resultVO = new ResultVO();
         try {
-            productInfoSerivce.saveOrUpdate(productInfo);
+            String result = productInfoSerivce.saveOrUpdate(productInfo);
+            if ("1".equals(result)) {
+                resultVO.setCode(1);
+                resultVO.setMsg("保存失败！");
+                log.error("保存失败, productInfo={}", productInfo);
+                return resultVO;
+            }
+            resultVO.setCode(0);
+            resultVO.setMsg("保存成功！");
         } catch (Exception e) {
-            log.error("新增或更新失败：" + e.getMessage());
+            resultVO.setCode(1);
+            resultVO.setMsg("保存失败！");
+            log.error("保存失败：" + e.getMessage());
         }
+        return resultVO;
     }
 
 }

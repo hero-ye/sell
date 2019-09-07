@@ -26,11 +26,22 @@ public class OrderMainRest {
     @Resource(name = "orderMainService")
     private OrderMainService orderMainService;
 
+    /**
+     * 新增/更新商品
+     * @param orderMain
+     * @return
+     */
     @RequestMapping(value = "/saveOrUpdate", method = RequestMethod.POST)
-    public ResultVO saveOrUpdate(OrderMain orderMain){
+    public ResultVO saveOrUpdate(OrderMain orderMain) {
         ResultVO resultVO = new ResultVO();
         try {
-            orderMainService.saveOrUpdate(orderMain);
+            String result = orderMainService.saveOrUpdate(orderMain);
+            if ("1".equals(result)) {
+                resultVO.setCode(1);
+                resultVO.setMsg("保存失败！");
+                log.error("【保存订单】保存失败, orderMain={}", orderMain);
+                return resultVO;
+            }
             resultVO.setCode(0);
             resultVO.setMsg("保存成功！");
         } catch (Exception e) {
@@ -43,11 +54,12 @@ public class OrderMainRest {
 
     /**
      * 根据openId查询
+     *
      * @param openId
      * @return
      */
     @RequestMapping(value = "/findByBuyerOpenid/{page}/{size}", method = RequestMethod.GET)
-    public ResultVO findByBuyerOpenid(String openId, @PathVariable Integer page, @PathVariable Integer size){
+    public ResultVO findByBuyerOpenid(String openId, @PathVariable Integer page, @PathVariable Integer size) {
         ResultVO resultVO = new ResultVO();
         page = page == null ? 1 : page;
         size = size == null ? 10 : size;
@@ -67,6 +79,7 @@ public class OrderMainRest {
 
     /**
      * 根据主键ID查询
+     *
      * @param orderId
      * @return
      */

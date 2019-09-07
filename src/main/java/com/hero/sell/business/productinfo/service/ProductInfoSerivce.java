@@ -6,6 +6,7 @@ import com.hero.sell.entities.ProductInfo;
 import com.hero.sell.enums.ProductInfoEnum;
 import com.hero.sell.enums.ResultEnum;
 import com.hero.sell.exception.SellException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -67,17 +69,35 @@ public class ProductInfoSerivce {
      * 新增/更新
      * @param productInfo
      */
-    public void saveOrUpdate(ProductInfo productInfo){
-        productInfoDao.save(productInfo);
-
+    public String saveOrUpdate(ProductInfo productInfo){
+        if (StringUtils.isEmpty(productInfo.getProductId())) {  //新增
+            productInfo.setCreateTime(new Date());
+            productInfo.setModifyTime(new Date());
+        } else {    //更新
+            productInfo.setModifyTime(new Date());
+        }
+        ProductInfo result = productInfoDao.save(productInfo);
+        if (result == null) {
+            return "1";
+        }
+        return "2";
     }
 
     /**
      * 加库存
      * @param cartDTOList
      */
+    @Transactional
     public void increaseStock(List<CartDTO> cartDTOList){
-
+        for (CartDTO cartDTO : cartDTOList) {
+            ProductInfo productInfo = productInfoDao.findById(cartDTO.getProductId()).get();
+            if (productInfo == null) {
+                throw new SellException(ResultEnum.PRODUCT_NOT_EXIST);  //商品不存在
+            }
+            Integer result = productInfo.getProductStock() + cartDTO.getProductQuantity();
+            productInfo.setProductStock(result);
+            this.saveOrUpdate(productInfo);
+        }
     }
 
     /**

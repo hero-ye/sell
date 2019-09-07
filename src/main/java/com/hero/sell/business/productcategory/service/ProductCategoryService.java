@@ -2,9 +2,11 @@ package com.hero.sell.business.productcategory.service;
 
 import com.hero.sell.business.productcategory.dao.ProductCategoryDao;
 import com.hero.sell.entities.ProductCategory;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -59,6 +61,12 @@ public class ProductCategoryService {
      * @param productCategory
      */
     public void saveOrUpdate(ProductCategory productCategory){
+        if (StringUtils.isEmpty(productCategory.getCategoryId())) {  //新增
+            productCategory.setCreateTime(new Date());
+            productCategory.setModifyTime(new Date());
+        } else {    //更新
+            productCategory.setModifyTime(new Date());
+        }
         productCategoryDao.save(productCategory);
     }
 

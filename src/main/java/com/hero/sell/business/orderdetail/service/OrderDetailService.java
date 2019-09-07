@@ -2,6 +2,7 @@ package com.hero.sell.business.orderdetail.service;
 
 import com.hero.sell.business.orderdetail.dao.OrderDetailDao;
 import com.hero.sell.entities.OrderDetail;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +34,12 @@ public class OrderDetailService {
      * @param orderDetail
      */
     public void saveOrUpdate(OrderDetail orderDetail){
-        orderDetail.setCreateTime(new Date());
-        orderDetail.setModifyTime(new Date());
+        if (StringUtils.isEmpty(orderDetail.getDetailId())) {  //新增
+            orderDetail.setCreateTime(new Date());
+            orderDetail.setModifyTime(new Date());
+        } else {    //更新
+            orderDetail.setModifyTime(new Date());
+        }
         orderDetailDao.save(orderDetail);
     }
 
