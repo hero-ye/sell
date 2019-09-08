@@ -6,10 +6,7 @@ import com.hero.sell.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -58,12 +55,13 @@ public class OrderMainRest {
      * @param openId
      * @return
      */
-    @RequestMapping(value = "/findByBuyerOpenid/{page}/{size}", method = RequestMethod.GET)
-    public ResultVO findByBuyerOpenid(String openId, @PathVariable Integer page, @PathVariable Integer size) {
+    @RequestMapping(value = "/findByBuyerOpenid", method = RequestMethod.GET)
+    public ResultVO findByBuyerOpenid(@RequestParam("openid") String openId,
+                                      @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size", defaultValue = "10") Integer size) {
         ResultVO resultVO = new ResultVO();
-        page = page == null ? 1 : page;
-        size = size == null ? 10 : size;
-        PageRequest pageRequest = new PageRequest(page, size);
+        //PageRequest pageRequest = new PageRequest(page, size);
+        PageRequest pageRequest = PageRequest.of(page, size);
         try {
             Page<OrderMain> orderMainPage = orderMainService.findByBuyerOpenid(openId, pageRequest);
             resultVO.setCode(0);

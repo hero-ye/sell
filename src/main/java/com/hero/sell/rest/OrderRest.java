@@ -72,12 +72,13 @@ public class OrderRest {
      * @param size
      * @return
      */
-    @RequestMapping(value = "/findOrderList/{page}/{size}", method = RequestMethod.GET)
-    public ResultVO findOrderList(String buyerOpenId, @PathVariable Integer page, @PathVariable Integer size) {
+    @RequestMapping(value = "/findOrderList", method = RequestMethod.GET)
+    public ResultVO findOrderList(@RequestParam("buyerOpenId") String buyerOpenId,
+                                  @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                  @RequestParam(value = "size", defaultValue = "10") Integer size) {
         ResultVO resultVO = new ResultVO();
-        page = page == null ? 1 : page;
-        size = size == null ? 10 : size;
-        PageRequest pageRequest = new PageRequest(page, size);
+        //PageRequest pageRequest = new PageRequest(page, size);
+        PageRequest pageRequest = PageRequest.of(page, size);
         try {
             Page<OrderDTO> orderDTOPage = orderService.findOrderList(buyerOpenId, pageRequest);
             resultVO.setCode(0);
