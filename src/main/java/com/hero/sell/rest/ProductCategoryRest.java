@@ -1,6 +1,6 @@
-package com.hero.sell.business.productcategory.rest;
+package com.hero.sell.rest;
 
-import com.hero.sell.business.productcategory.service.ProductCategoryService;
+import com.hero.sell.service.ProductCategoryService;
 import com.hero.sell.entities.ProductCategory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

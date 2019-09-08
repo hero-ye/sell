@@ -1,6 +1,6 @@
-package com.hero.sell.business.orderdetail.service;
+package com.hero.sell.service;
 
-import com.hero.sell.business.orderdetail.dao.OrderDetailDao;
+import com.hero.sell.dao.OrderDetailDao;
 import com.hero.sell.entities.OrderDetail;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

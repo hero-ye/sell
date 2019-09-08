@@ -1,6 +1,6 @@
-package com.hero.sell.business.orderdetail.reset;
+package com.hero.sell.rest;
 
-import com.hero.sell.business.orderdetail.service.OrderDetailService;
+import com.hero.sell.service.OrderDetailService;
 import com.hero.sell.entities.OrderDetail;
 import com.hero.sell.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;

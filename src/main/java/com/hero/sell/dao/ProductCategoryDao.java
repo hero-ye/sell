@@ -1,4 +1,4 @@
-package com.hero.sell.business.productcategory.dao;
+package com.hero.sell.dao;
 
 import com.hero.sell.entities.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.hero.sell.business.orderdetail.dao;
+package com.hero.sell.dao;
 
 import com.hero.sell.entities.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;

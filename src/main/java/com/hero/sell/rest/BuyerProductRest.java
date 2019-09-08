@@ -1,6 +1,6 @@
-package com.hero.sell.business.buyer.rest;
+package com.hero.sell.rest;
 
-import com.hero.sell.business.buyer.service.BuyerProductService;
+import com.hero.sell.service.BuyerProductService;
 import com.hero.sell.vo.ProductVO;
 import com.hero.sell.vo.ResultVO;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,5 @@
-package com.hero.sell.business.buyer.service;
+package com.hero.sell.service;
 
-import com.hero.sell.business.productcategory.service.ProductCategoryService;
-import com.hero.sell.business.productinfo.service.ProductInfoSerivce;
 import com.hero.sell.entities.ProductCategory;
 import com.hero.sell.entities.ProductInfo;
 import com.hero.sell.vo.ProductInfoVO;

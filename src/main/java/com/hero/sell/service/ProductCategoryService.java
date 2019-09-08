@@ -1,6 +1,6 @@
-package com.hero.sell.business.productcategory.service;
+package com.hero.sell.service;
 
-import com.hero.sell.business.productcategory.dao.ProductCategoryDao;
+import com.hero.sell.dao.ProductCategoryDao;
 import com.hero.sell.entities.ProductCategory;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

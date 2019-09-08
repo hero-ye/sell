@@ -1,6 +1,6 @@
-package com.hero.sell.business.productinfo.service;
+package com.hero.sell.service;
 
-import com.hero.sell.business.productinfo.dao.ProductInfoDao;
+import com.hero.sell.dao.ProductInfoDao;
 import com.hero.sell.dto.CartDTO;
 import com.hero.sell.entities.ProductInfo;
 import com.hero.sell.enums.ProductInfoEnum;

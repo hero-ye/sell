@@ -1,4 +1,4 @@
-package com.hero.sell.business.ordermain.dao;
+package com.hero.sell.dao;
 
 import com.hero.sell.entities.OrderMain;
 import org.springframework.data.domain.Page;
