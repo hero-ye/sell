@@ -14,6 +14,8 @@ spring:
   jpa:
     show-sql: true
     database: mysql
+  jackson:
+    default-property-inclusion: non_null  #如果某个属性为null，则查询结果不显示，使用该配置后，就不需要在每个实体上架注解
 
 
 #logging:
