@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 07/09/2019 23:27:44
+ Date: 08/09/2019 17:15:22
 */
 
 SET NAMES utf8mb4;
@@ -52,6 +52,8 @@ INSERT INTO `tbl_order_detail` VALUES ('402880e86d0b73df016d0b7535df0001', 'e12c
 INSERT INTO `tbl_order_detail` VALUES ('402880e86d0c172b016d0c18e98d0000', '912a40342dea40418269a1c867af31c7', '402880e86ced40cb016ced44a7330000', '奥尔良鸡肉披萨', 72.90, 6, '/icon/2019/09/01/pizza.jpg', '张予曦', '2019-09-07 22:20:22', '张予曦', '2019-09-07 22:20:22');
 INSERT INTO `tbl_order_detail` VALUES ('402880e86d0c172b016d0c190a1e0001', '912a40342dea40418269a1c867af31c7', '402880e86ced40cb016ced49a6b60002', '北极贝刺身', 58.00, 9, '/icon/2019/09/01/scallops sashimi.jpg', '张予曦', '2019-09-07 22:20:31', '张予曦', '2019-09-07 22:20:31');
 INSERT INTO `tbl_order_detail` VALUES ('402880e86d0c172b016d0c1926f80002', '912a40342dea40418269a1c867af31c7', '402880e86ced40cb016ced47c5b00001', '地狱拉面', 38.00, 9, '/icon/2019/09/01/hellramen.jpg', '张予曦', '2019-09-07 22:20:38', '张予曦', '2019-09-07 22:20:38');
+INSERT INTO `tbl_order_detail` VALUES ('402880e86d0fca83016d0fcab6620000', '400975a7f4b04a22bb7654b474b851fd', '402880e86ced40cb016ced49a6b60002', '北极贝刺身', 58.00, 2, '/icon/2019/09/01/scallops sashimi.jpg', ' 白冰', '2019-09-08 15:33:26', ' 白冰', '2019-09-08 15:33:26');
+INSERT INTO `tbl_order_detail` VALUES ('402880e86d0fca83016d0fcab6680001', '400975a7f4b04a22bb7654b474b851fd', '402880e86ced40cb016ced47c5b00001', '地狱拉面', 38.00, 1, '/icon/2019/09/01/hellramen.jpg', ' 白冰', '2019-09-08 15:33:26', ' 白冰', '2019-09-08 15:33:26');
 
 -- ----------------------------
 -- Table structure for tbl_order_main
@@ -77,7 +79,8 @@ CREATE TABLE `tbl_order_main`  (
 -- ----------------------------
 -- Records of tbl_order_main
 -- ----------------------------
-INSERT INTO `tbl_order_main` VALUES ('402880e86cf2b30d016cf2b36be90000', '张叶蕾', '15648674502', '湖北省武汉市江汉区常青路海马公园11栋1101室', '1001016', 322.90, 0, 0, '张叶蕾', '2019-09-07 16:52:36', '张叶蕾', '2019-09-07 16:52:36');
+INSERT INTO `tbl_order_main` VALUES ('400975a7f4b04a22bb7654b474b851fd', ' 白冰', ' 15001011131', ' 西安市灞桥区广安路振业泊墅10-103幢', ' ew3euwhd7sjw9diwkq', 154.00, 0, 0, ' 白冰', '2019-09-08 15:33:26', ' 白冰', '2019-09-08 16:16:06');
+INSERT INTO `tbl_order_main` VALUES ('402880e86cf2b30d016cf2b36be90000', '张叶蕾', '15648674502', '湖北省武汉市江汉区常青路海马公园11层1101室', '1001016', 322.90, 0, 0, '张叶蕾', '2019-09-07 16:52:36', '张叶蕾', '2019-09-07 16:52:36');
 INSERT INTO `tbl_order_main` VALUES ('402880e86cf2c337016cf2c79a120000', '叶金雄', '18993847254', '湖北省武汉市东西湖区中国联通湖北省分公司', '1001011', 96.00, 0, 0, '叶金雄', '2019-09-07 16:38:13', '叶金雄', '2019-09-07 16:38:14');
 INSERT INTO `tbl_order_main` VALUES ('912a40342dea40418269a1c867af31c7', '张予曦', '18970677878', '吉林省延边朝鲜族自治州敦化市鸿德蓝湾(新宾路西)5栋49层4902室', '1001018', 1301.40, 0, 0, '张予曦', '2019-09-07 22:21:28', '张予曦', '2019-09-07 23:24:05');
 INSERT INTO `tbl_order_main` VALUES ('c4babc7d52ae40b79b8abbf25ad6f11a', '李凡一', '17634858475', '湖北省武汉市江岸区泛海国际3栋15楼1502室', '1001012', 186.90, 0, 0, '李凡一', '2019-09-07 17:16:47', '李凡一', '2019-09-07 17:16:47');
@@ -130,8 +133,8 @@ CREATE TABLE `tbl_product_info`  (
 -- Records of tbl_product_info
 -- ----------------------------
 INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced44a7330000', '奥尔良鸡肉披萨', 72.90, 38, '精选奥尔良上等鸡肉', '/icon/2019/09/01/pizza.jpg', '0', 2, 'yejx', '2019-09-07 21:58:03', 'yejx', '2019-09-07 22:45:08');
-INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced47c5b00001', '地狱拉面', 38.00, 16, '不一样的拉面', '/icon/2019/09/01/hellramen.jpg', '0', 2, 'yejx', '2019-09-01 22:48:17', 'yejx', '2019-09-07 22:45:08');
-INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced49a6b60002', '北极贝刺身', 58.00, 56, '6片/份。加拿大冷水生长北极贝。', '/icon/2019/09/01/scallops sashimi.jpg', '0', 3, 'yejx', '2019-09-07 21:58:03', 'yejx', '2019-09-07 22:45:08');
+INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced47c5b00001', '地狱拉面', 38.00, 16, '不一样的拉面', '/icon/2019/09/01/hellramen.jpg', '0', 2, 'yejx', '2019-09-01 22:48:17', 'yejx', '2019-09-08 16:16:06');
+INSERT INTO `tbl_product_info` VALUES ('402880e86ced40cb016ced49a6b60002', '北极贝刺身', 58.00, 56, '6片/份。加拿大冷水生长北极贝。', '/icon/2019/09/01/scallops sashimi.jpg', '0', 3, 'yejx', '2019-09-07 21:58:03', 'yejx', '2019-09-08 16:16:06');
 
 -- ----------------------------
 -- Table structure for tbl_seller_info
