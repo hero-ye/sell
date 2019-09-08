@@ -12,6 +12,7 @@ import java.math.BigDecimal;
  * @Date 2019/9/1
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_EMPTY)   //如果某个属性为null，则查询结果不显示，全局设置在application.yml中
 public class ProductInfoVO {
 
     @JsonProperty("id")

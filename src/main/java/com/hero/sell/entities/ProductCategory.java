@@ -20,6 +20,7 @@ import java.util.Date;
 @Table(name = "tbl_product_category")
 @Data
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+//@JsonInclude(JsonInclude.Include.NON_EMPTY)   //如果某个属性为null，则查询结果不显示，全局设置在application.yml中
 public class ProductCategory {
 
     @Id

@@ -17,6 +17,7 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "tbl_order_detail")
+//@JsonInclude(JsonInclude.Include.NON_EMPTY)   //如果某个属性为null，则查询结果不显示，全局设置在application.yml中
 public class OrderDetail {
 
     @Id
