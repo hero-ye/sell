@@ -1,6 +1,8 @@
 package com.hero.sell.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.hero.sell.entities.OrderDetail;
+import com.hero.sell.utils.serializer.DateToLongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -32,10 +34,12 @@ public class OrderDTO {
 
     private String createName;   //创建人
 
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date createTime;   //创建时间
 
     private String modifyName;  //修改人
 
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date modifyTime;   //修改时间
 
     private List<OrderDetail> orderDetailList;  //一张订单对应多个商品

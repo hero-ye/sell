@@ -1,6 +1,8 @@
 package com.hero.sell.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.hero.sell.utils.serializer.DateToLongSerializer;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -36,12 +38,14 @@ public class ProductCategory {
     private String createName;   //创建人
 
     @Column(name = "create_time")
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date createTime;   //创建时间
 
     @Column(name = "modify_name", length = 40)
     private String modifyName;  //修改人
 
     @Column(name = "modify_time")
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date modifyTime;   //修改时间
 
 }
