@@ -91,8 +91,8 @@ public class OrderService {
 
         //3.订单写入到数据库
         OrderMain orderMain = new OrderMain();
+        orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO, orderMain);  //使用此操作时需要放在设置参数的第一步，否则可能会被覆盖掉
-        orderMain.setOrderId(orderId);
         orderMain.setOrderAmount(orderAmount);
         orderMain.setOrderStatus(0);
         orderMain.setPayStatus(0);
