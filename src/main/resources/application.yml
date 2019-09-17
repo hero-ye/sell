@@ -23,3 +23,9 @@ spring:
 #    console: "%d - %msg%n"
 ##  path: D:/01-Project/sell/log   #将日志存储到 src/main/log 目录下，默认文件名为spring.log
 #  file: D:/01-Project/sell/log/sell.log   #将日志存储到 src/main/log 目录下，并且设置日志文件名为sell.log
+
+wechat:
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: 29d8a650db31472aa87800e3b0d739f2
+
+
