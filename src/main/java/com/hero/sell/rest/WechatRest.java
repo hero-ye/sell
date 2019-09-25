@@ -32,7 +32,7 @@ public class WechatRest {
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
         //1.配置
         //2.调用方法
-        String url = "http://39g8yq.natappfree.cc/sell/wechat/userInfo";
+        String url = "http://yejx.nat300.top/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
         return "redirect:" + redirectUrl;
 
