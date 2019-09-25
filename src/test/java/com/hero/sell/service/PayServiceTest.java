@@ -32,4 +32,10 @@ public class PayServiceTest {
         payService.create(orderDTO);
     }
 
+    @Test
+    public void refund(){
+        OrderDTO orderDTO = orderService.findOrderDTOById("402880e86cf2b30d016cf2b36be90000");
+        payService.refund(orderDTO);
+    }
+
 }

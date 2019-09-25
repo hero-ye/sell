@@ -4,7 +4,7 @@
  Source Server         : sell
  Source Server Type    : MySQL
  Source Server Version : 50717
- Source Host           : 192.168.0.117:3306
+ Source Host           : 192.168.0.118:3306
  Source Schema         : sell
 
  Target Server Type    : MySQL

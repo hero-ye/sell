@@ -44,6 +44,9 @@ public class OrderService {
     @Resource(name = "orderMainService")
     private OrderMainService orderMainService;
 
+    @Resource(name = "payService")
+    private PayService payService;
+
     /**
      * 创建订单
      *
@@ -178,7 +181,7 @@ public class OrderService {
 
         //如果已支付，需要退款
         if (PayStatusEnum.SUCCESS.equals(orderMain.getPayStatus())) {
-            //TODO
+            payService.refund(orderDTO);
         }
         return orderDTO;
     }
