@@ -7,7 +7,7 @@ spring:
   application:
     name: sell
   datasource:
-    url: jdbc:mysql://192.168.0.117:3306/sell?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://192.168.0.118:3306/sell?characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: root
@@ -25,11 +25,12 @@ spring:
 #  file: D:/01-Project/sell/log/sell.log   #将日志存储到 src/main/log 目录下，并且设置日志文件名为sell.log
 
 wechat:
-  mpAppId: wxd898fcb01713c658
-  mpAppSecret: 29d8a650db31472aa87800e3b0d739f2
+  mpAppId: wxa5ded3a627b40b78
+  mpAppSecret: b7d4986df3c922e754a987efee743454
   mchId: 1409146202
   mchKey: c976503d34ca432c601361f969fd8d85
-  keyPath: /var/weixin_cert/h5.p12
+#  keyPath: /var/weixin_cert/h5.p12
+  keyPath: D:\01-Project\03-Linux\weixindiancan\h5.p12
   notifyUrl: http://127.0.0.1:9000/sell/pay/notify  //异步通知地址
 
 
