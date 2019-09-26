@@ -34,15 +34,14 @@ public class WechatRest {
         //2.调用方法
         String url = "http://yejx.nat300.top/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAUTH2_SCOPE_USER_INFO, URLEncoder.encode(returnUrl));
+        log.info("【微信网页授权】获取code， redirectUrl={}", redirectUrl);
         return "redirect:" + redirectUrl;
-
-
     }
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public String userInfo(@RequestParam("code") String code,
                          @RequestParam("state") String returnUrl) {
-        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();
+        WxMpOAuth2AccessToken wxMpOAuth2AccessToken;
         try {
             wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
         } catch (WxErrorException e) {
@@ -51,7 +50,6 @@ public class WechatRest {
         }
         String openId = wxMpOAuth2AccessToken.getOpenId();
         return "redirect:" + returnUrl + "?openId=" + openId;
-
     }
 
 
